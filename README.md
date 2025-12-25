@@ -1,58 +1,21 @@
-Siri Proxy
+SiriProxy-AppleIntelligence
 ==========
 
-SiriProxy and iOS 7
+Supported Hardware Notices
 -------------------
 
-***SiriProxy does not (at this time) work with iOS 7***. Significant changes made to the Siri protocol stack have rendered SiriProxy inoperable with iOS 7. Some of the changes are easy to patch, others may wind up requiring significant work. See [#542](https://github.com/plamoni/SiriProxy/issues/542) for ongoing discussion regarding the effort to make SiriProxy work with iOS 7. However, SiriProxy may *never* support iOS 7. So if SiriProxy is important, you should avoid upgrading your device.
+***SiriProxy does not (at this time) work with iOS 7 and newer***. Significant changes made to the Siri protocol stack have rendered SiriProxy inoperable with iOS 7. This is only available for devices running iOS 6 and which also officially support Siri. SiriPort is not compatible.
 
+***The server can ONLY be run on Apple Silicon Macs with macOS Tahoe or newer***, due to the way Apple Intelligence is only supported on those machines.
 
-About
------
-Siri Proxy is a proxy server for Apple's Siri "assistant." The idea is to allow for the creation of custom handlers for different actions. This can allow developers to easily add functionality to Siri. 
+<!--- https://github.com/plamoni/SiriProxy/tree/master/plugins/siriproxy-example --->
 
-The main example I provide is a plugin to control [my thermostat](http://www.radiothermostat.com/latestnews.html#advanced) with Siri. It responds to commands such as, "What's the status of the thermostat?", or "Set the thermostat to 68 degrees", or even "What's the inside temperature?"
-
-Notice About Plugins
---------------------
-
-We recently changed the way plugins work very significantly. That being the case, your old plugins won't work. 
-
-New plugins should be independent Gems. Take a look at the included [example plugin](https://github.com/plamoni/SiriProxy/tree/master/plugins/siriproxy-example) for some inspiration. We will try to keep that file up to date with the latest features. 
-
-The State of This Project
-------------------------- 
-
-Please remember that this project is super-pre-alpha right now. If you're not a developer with a good bit of experience with networks, you're probably not even going to get the proxy running. But if you do (we are willing to help to an extent, check the IRC chat and my Twitter feed [@plamoni](http://www.twitter.com/plamoni)), then test out building a plugin. It's very easy to do and takes almost no time at all for most experienced developers. Check the demo videos and other plugins below for inspiration!
-
-
-Find us on IRC
---------------
-
-We now have an IRC channel. Check out the #SiriProxy channel on irc.freenode.net.
-
-Demo Video
------------
-
-See the system in action here: [http://www.youtube.com/watch?v=AN6wy0keQqo](http://www.youtube.com/watch?v=AN6wy0keQqo)
-
-More Demo Videos and Other Plugins
-----------------------------------
-
-For a list of current plugins and some more demo videos, check the [Plugins page](https://github.com/plamoni/SiriProxy/wiki/Plugins) on the wiki.  
-
-Set-up Instructions
+Setup Instructions
 -------------------
 
-**NEW Instructions for 0.5.0**
+**Set up RVM and Ruby**
 
-Note that the installation instructions have changed. It's no longer necessary to install dnsmasq. Also, SiriProxy is available via rubygems for easy installation.
-
-**Set up RVM and Ruby 2.0.0**
-
-If you don't already have Ruby 2.0.0 (or at least 1.9.3) installed through RVM, please do so in order to make sure you can follow the steps later. Experts can ignore this. If you're unsure, follow these directions carefully:
-
-1. Install pre-requisites. Veries by system. For a fresh Ubuntu 12.10 install, these seem to be good:
+1. Install pre-requisites.
 
 	`sudo apt-get install libxslt1.1 libxslt-dev xvfb build-essential git-core curl libyaml-dev libssl-dev`
 
@@ -95,16 +58,6 @@ If you don't already have Ruby 2.0.0 (or at least 1.9.3) installed through RVM, 
 6. Tell your phone to use your SiriProxy server as its DNS server (under your Wifi settings)
 7. Test that the server is running by saying "Test Siri Proxy" to your phone.
 
-FAQ
----
-
-**Will this let me run Siri on my none Siri devices (eg. iPhone 4, iPod Touch, iPhone 3G, Microwave, etc)?**
-
-No. Please stop asking. 
-
-**What is your opinion on h1siri, public SiriProxy servers, and other Siri "ports"?**
-
-Glad you asked! Watch this: [http://youtu.be/Y_Q6PfxBSbA](http://youtu.be/Y_Q6PfxBSbA)
 
 **How do I generate the certificate?**
 
@@ -119,10 +72,6 @@ Check out my video on this:
 **Will this work outside my home network?**
 
 No, it won't. But, as suggested by STBullard on YouTube, you COULD VPN into your home network from outside your house in order to make this work. That would not require a jailbreak. Of course, it also means ALL your traffic gets funneled through your home network. The nice thing about adding an entry to your /etc/hosts file (on a jailbroken phone) is that it funnels only Siri traffic through your home network, and not all your traffic.
-
-**Can you provide me with an iPhone 4S UDID?**
-
-No. Don't even ask.
 
 **I'm getting a bunch of "[Info - Guzzoni] Object: SessionValidationFailed" messages. What's wrong?!**
 
